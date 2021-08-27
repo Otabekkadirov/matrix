@@ -81,6 +81,56 @@ function showBottomTriangle(matrix) {
     console.log(result.join("  "));
   }
 }
+function rotateMatrix(matrix) {
+  console.log(`\nRotate the matrix:`);
+  let final = [];
+  for (let i = 0; i < matrix[0].length; i++) {
+    let result = [];
+    for (let j = 0; j < matrix.length; j++) {
+      let currentIndex = matrix[0].length - 1 - i;
+      result.push(matrix[j][currentIndex]);
+    }
+    final.push(result);
+  }
+  // console.log(final);
+  return final;
+}
+function rotateMatrixClockwise(matrix) {
+  console.log(`\nRotate the matrix clockwise:`);
+  let final = [];
+  for (let i = 0; i < matrix[0].length; i++) {
+    let result = [];
+    for (let j = 0; j < matrix.length; j++) {
+      let currentColumn = matrix.length - 1 - j;
+      result.push(matrix[currentColumn][i]);
+    }
+    final.push(result);
+  }
+  // console.log(final);
+  return final;
+}
+function createMatrix(number) {
+  console.log(`\nCreate a matrix n x n:`);
+
+  let matrix = [];
+
+  for (let i = 0; i < number; i++) {
+    let subMatrix = [];
+    while (subMatrix.length < number) {
+      subMatrix.push(0);
+    }
+
+    matrix.push(subMatrix);
+
+    for (let j = 0; j < matrix.length; j++) {
+      if (matrix[j][j] === 0) {
+        matrix[j][j] = 1;
+      }
+    }
+  }
+  // console.log(matrix);
+  return matrix;
+}
 
 let matrix = [
   [1, 2, 3, 4],
@@ -88,13 +138,30 @@ let matrix = [
   [0, 3, 6, 9],
   [6, 8, 0, 2],
 ];
+let image = [
+  [1, 0, 5, 0, 9],
+  [1, 0, 5, 0, 9],
+  [1, 0, 5, 0, 9],
+  [1, 0, 5, 0, 9],
+  [1, 0, 5, 0, 9],
+];
+let array = [
+  [-1, 4, 5],
+  [2, 3, 4],
+];
 // Uncomment these function calls below to see what they do:
 
 // logEachMatrix(matrix);
-// showMatrix(matrix);
+// showMatrix(image);
 // showSumByRow(matrix);
 // findColumnWithZero(matrix);
 // snakeJazz(matrix);
 // showMainDiag(matrix);
 // showSideDiag(matrix);
 // showBottomTriangle(matrix);
+// showMatrix(rotateMatrix(image));
+// showMatrix(rotateMatrixClockwise(image));
+// showMatrix(createMatrix(10));
+// showMatrix(rotateMatrix(createMatrix(10)));
+// showMatrix(rotateMatrixClockwise(createMatrix(10)));
+// showMatrix(rotateMatrixClockwise(rotateMatrixClockwise(createMatrix(10))));
